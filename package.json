@@ -1,0 +1,21 @@
+{
+  "name": "animal-rescue-platform",
+  "version": "1.0.0",
+  "description": "Full-Stack Animal Rescue & Emergency Response Platform",
+  "scripts": {
+    "server": "cd server && node server.js",
+    "client": "cd client && npm run dev",
+    "build": "cd client && npm run build",
+    "seed": "cd server && npm run seed"
+  },
+  "keywords": [
+    "animal-rescue",
+    "emergency-response",
+    "full-stack",
+    "react",
+    "express",
+    "mongodb"
+  ],
+  "author": "",
+  "license": "ISC"
+}
