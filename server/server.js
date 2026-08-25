@@ -82,11 +82,20 @@ const startServer = async () => {
     // Auto-seed initial data if empty
     await seedData();
 
-    app.listen(PORT, () => {
+    const server = app.listen(PORT, () => {
       console.log(`====================================================`);
       console.log(`🐾 Animal Rescue Backend Server running on port ${PORT}`);
       console.log(`   Health Check: http://localhost:${PORT}/api/health`);
       console.log(`====================================================`);
+    });
+
+    // Handle unexpected errors gracefully without terminating
+    process.on('uncaughtException', (err) => {
+      console.error('[Process Uncaught Exception]:', err);
+    });
+
+    process.on('unhandledRejection', (reason, promise) => {
+      console.error('[Process Unhandled Rejection]:', reason);
     });
   } catch (err) {
     console.error('Failed to start server:', err);
@@ -97,3 +106,4 @@ const startServer = async () => {
 startServer();
 
 module.exports = app;
+
